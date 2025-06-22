@@ -1,0 +1,57 @@
+type Query {
+    alphaSources: [AlphaSource]
+}
+
+type Accessibility {
+    name: ID!
+    category: Int
+}
+
+type AlphaSource {
+    id: ID!,
+    name: String,
+    description: String
+    depth: Int
+    accessibility: Accessibility
+    updatedBy: String
+    updatedAt: DateTime
+    isApproved: Boolean
+    approvedBy: String
+    approvedAt: DateTime
+    fields: [Field]
+}
+
+type Field {
+    id: ID!
+    name: String
+    value: String
+}
+
+type Mutation {
+    createAlphaSource(createAlphaSource: CreateAlphaSource): String
+}
+
+input CreateAccessibility {
+    name: ID!
+    category: Int
+}
+
+input CreateAlphaSource {
+    name: String,
+    description: String
+    depth: Int
+    accessibility: CreateAccessibility
+    updatedBy: String
+    updatedAt: DateTime
+    isApproved: Boolean
+    approvedAt: DateTime
+    approvedBy: String
+    fields: [CreateField]
+}
+
+input CreateField {
+    name: String
+    value: String
+}
+
+scalar DateTime
