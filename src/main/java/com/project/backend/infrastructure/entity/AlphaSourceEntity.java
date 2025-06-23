@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -25,10 +26,12 @@ public class AlphaSourceEntity {
     private Boolean isApproved;
     private String approvedBy;
     private OffsetDateTime approvedAt;
+    @OneToMany(mappedBy = "alphaSourceEntity", cascade = CascadeType.ALL)
+    private List<AlphaFieldEntity> fields;
 
     protected AlphaSourceEntity() {}
 
-    public AlphaSourceEntity(String id, String name, String description, Integer depth, String accessibilityName, Integer accessibilityCategory, String updatedBy, OffsetDateTime updatedAt, Boolean isApproved, String approvedBy, OffsetDateTime approvedAt) {
+    public AlphaSourceEntity(String id, String name, String description, Integer depth, String accessibilityName, Integer accessibilityCategory, String updatedBy, OffsetDateTime updatedAt, Boolean isApproved, String approvedBy, OffsetDateTime approvedAt, List<AlphaFieldEntity> fields) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,5 +43,6 @@ public class AlphaSourceEntity {
         this.isApproved = isApproved;
         this.approvedBy = approvedBy;
         this.approvedAt = approvedAt;
+        this.fields = fields;
     }
 }

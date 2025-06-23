@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @DgsComponent
 public class CreateAlphaSourceDatafetcher {
+
     private final CommandHandler<CreateAlphaSourceCommand, String> createAlphaSourceCommandHandler;
     private final CreateAlphaSourceMapper createAlphaSourceMapper;
 
