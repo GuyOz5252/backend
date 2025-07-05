@@ -1,11 +1,15 @@
 package com.project.backend.infrastructure.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "alpha_fields")
 public class AlphaFieldEntity {
@@ -18,13 +22,4 @@ public class AlphaFieldEntity {
     @ManyToOne
     @JoinColumn(name = "alpha_source_id")
     private AlphaSourceEntity alphaSourceEntity;
-
-    public AlphaFieldEntity() {}
-
-    public AlphaFieldEntity(String id, String name, String value, AlphaSourceEntity alphaSourceEntity) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
-        this.alphaSourceEntity = alphaSourceEntity;
-    }
 }

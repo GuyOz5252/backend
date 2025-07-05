@@ -4,6 +4,7 @@ import com.project.backend.domain.abstraction.AlphaSourceRepository;
 import com.project.backend.shared.CommandHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class CreateAlphaSourceCommandHandler implements CommandHandler<CreateAlp
 
     private final AlphaSourceRepository alphaSourceRepository;
 
+    @Transactional
     @Override
     public Optional<String> handle(CreateAlphaSourceCommand command) {
         // TODO: validation
